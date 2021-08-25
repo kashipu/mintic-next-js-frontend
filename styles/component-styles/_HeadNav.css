@@ -1,0 +1,39 @@
+.header {
+    background-color: var(--main-color);
+    padding: .8rem 0rem;
+}
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    flex-wrap: wrap;
+}
+
+.container__logo {
+    display: flex;
+    align-items: center;
+}
+
+.container__nav {
+    display: flex;
+    align-items: center;
+}
+
+.container__nav ul {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 40px;
+}
+
+.container__nav ul li a {
+    text-decoration: none;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+.container__button {
+    display: flex;
+    align-items: center;
+}

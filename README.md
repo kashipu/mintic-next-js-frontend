@@ -39,3 +39,6 @@ Add(E1-3): agregar README.md
   
 - Una vez la PR sea aceptada, actualizar su estado en Jira a Complete.
 
+Api Gateway 
+https://graphql-gateway-makeares.herokuapp.com/ 
+
