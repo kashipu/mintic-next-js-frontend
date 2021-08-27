@@ -1,7 +1,10 @@
+/* Estilos de Componentes */
 @import url(./component-styles/_Variables.css);
 @import url(./component-styles/_HeadNav.css);
 @import url(./component-styles/_Buttons.css);
 @import url(./component-styles/_Layout.css);
+
+/* Estilos páginas */
 
 body {
     font-family: 'Ubuntu', sans-serif;

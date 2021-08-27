@@ -1,0 +1,5 @@
+.screen__dashboard {
+    display: grid;
+    grid-template-columns: 7fr 3fr;
+    padding-top: 2rem;
+}
