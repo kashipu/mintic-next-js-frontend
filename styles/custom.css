@@ -1,10 +1,12 @@
+@import url(./_Variables.css);
+
 /* Estilos de Componentes */
-@import url(./component-styles/_Variables.css);
 @import url(./component-styles/_HeadNav.css);
 @import url(./component-styles/_Buttons.css);
 @import url(./component-styles/_Layout.css);
 
 /* Estilos páginas */
+@import url(./pages-styles/_dashboard.css);
 
 body {
     font-family: 'Ubuntu', sans-serif;

@@ -33,6 +33,7 @@ export default function Home() {
                     </div>
                     <div className="dashboard__aside bfix">
                         <div className="dashboard__head">
+                            <h1>Bienvenido</h1>
                         </div>
                     </div>
                 </div>
