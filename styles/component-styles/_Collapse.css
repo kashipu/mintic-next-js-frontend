@@ -1,0 +1,23 @@
+.collapse__title {
+  background-color: var(--main-color);
+  color: white;
+  cursor: pointer;
+  padding: .8rem;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  border-radius: 10px 10px 0px 0px;
+  border: 1px solid var(--stroke-color)
+}
+
+.collapse__title h2 {
+    font-size: 1.3rem;
+    color: var(--text-title-color);
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 500;
+}
+
+.collapse__content {
+    padding: .5rem 1rem;
+}

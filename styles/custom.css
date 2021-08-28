@@ -4,6 +4,7 @@
 @import url(./component-styles/_HeadNav.css);
 @import url(./component-styles/_Buttons.css);
 @import url(./component-styles/_Layout.css);
+@import url(./component-styles/_Collapse.css);
 
 /* Estilos páginas */
 @import url(./pages-styles/_dashboard.css);
@@ -59,7 +60,16 @@ input {
     border-radius: 0.25rem;
 }
 
+.display-none {
+    display: none;
+}
 
+@media only screen and (max-width: 1400px) {
+    .wrapper {
+        max-width: 85%;
+        margin: 0 auto;
+    }
+  }
 
 
 

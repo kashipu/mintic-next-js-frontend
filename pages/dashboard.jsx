@@ -1,8 +1,8 @@
 import Head from "next/head";
 import Image from "next/image";
 import HeadNav from "../components/HeadNav";
-import Inputs from "../components/Inputs";
-import loginPhoto from "../public/img/loginimage.png";
+import Collapse from "../components/collapseContent";
+
 
 export default function Home() {
     return (
@@ -18,7 +18,7 @@ export default function Home() {
             <HeadNav />
             <main>
                 <div className="screen__dashboard wrapper">
-                    <div className="dashboard__main bfix">
+                    <div className="dashboard__main">
                         <div className="dashboard__head">
                             <h1 className="h1">
                                 Bienvenido, <br /> Juan José Perdomo
@@ -30,8 +30,11 @@ export default function Home() {
                                 ut iaculis sem tincidunt commodo. Ut a malesuada
                             </p>
                         </div>
+                        <div className="dashboard__content">
+                            <Collapse/>
+                        </div>
                     </div>
-                    <div className="dashboard__aside bfix">
+                    <div className="dashboard__aside">
                         <div className="dashboard__head">
                             <h1>Bienvenido</h1>
                         </div>
