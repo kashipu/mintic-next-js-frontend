@@ -2,7 +2,8 @@ import Head from "next/head";
 import Image from "next/image";
 import HeadNav from "../components/HeadNav";
 import Collapse from "../components/collapseContent";
-
+import ImageUser from "../components/ImageUser";
+import { educacion } from "../data/example"
 
 export default function Home() {
     return (
@@ -31,13 +32,23 @@ export default function Home() {
                             </p>
                         </div>
                         <div className="dashboard__content">
-                            <Collapse/>
+                            <Collapse title="Perfil profesional">
+                                <p>
+                                    Lorem ipsum dolor sit amet consectetur
+                                    adipisicing elit. Distinctio eum quaerat
+                                    quia excepturi cumque, iste molestiae, saepe
+                                    veritatis aliquid tempora veniam laudantium.
+                                    Consequatur, quo possimus nihil aspernatur
+                                    id vel itaque?
+                                </p>
+                            </Collapse>
+                            <Collapse title="Educación">
+                               
+                            </Collapse>
                         </div>
                     </div>
                     <div className="dashboard__aside">
-                        <div className="dashboard__head">
-                            <h1>Bienvenido</h1>
-                        </div>
+                        <ImageUser />
                     </div>
                 </div>
             </main>

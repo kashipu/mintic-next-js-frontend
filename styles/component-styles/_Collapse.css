@@ -1,3 +1,7 @@
+.collapse__box {
+  padding: 1.5rem 0rem;
+}
+
 .collapse__title {
   background-color: var(--main-color);
   color: white;
@@ -20,4 +24,7 @@
 
 .collapse__content {
     padding: .5rem 1rem;
-}
+    border-left: 1px solid var(--stroke-color);
+    border-right: 1px solid var(--stroke-color);
+    border-bottom: 1px solid var(--stroke-color);
+  }

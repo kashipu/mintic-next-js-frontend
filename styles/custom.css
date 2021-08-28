@@ -5,12 +5,14 @@
 @import url(./component-styles/_Buttons.css);
 @import url(./component-styles/_Layout.css);
 @import url(./component-styles/_Collapse.css);
+@import url(./component-styles/_imageuser.css);
 
 /* Estilos páginas */
 @import url(./pages-styles/_dashboard.css);
 
 body {
     font-family: 'Ubuntu', sans-serif;
+    font-size: 18px;
     line-height: 1.5;
     box-sizing: border-box;
 }
@@ -38,6 +40,7 @@ body {
 
 p {
     padding: .5rem 0rem;
+    font-weight: 300;
 }
 
 label {

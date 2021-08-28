@@ -8,6 +8,7 @@
     justify-content: space-between;
     align-content: center;
     flex-wrap: wrap;
+    align-items: center;
 }
 
 .container__logo {
@@ -16,7 +17,6 @@
 }
 
 .container__nav {
-    margin-top: 10px;
     display: flex;
     align-items: center;
 }
@@ -52,10 +52,10 @@
     }
     
     .container__nav {
+        margin-top: 10px;
         order: 3;
         width: 100%;
-        display: none;
-        border: 1px solid red;       
+        display: none;     
     }
 
     .container__button {

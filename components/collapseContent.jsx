@@ -1,18 +1,12 @@
-export default function collapseContent() {
+export default function collapseContent({ title, children }) {
     return (
         <div>
-            <div className="collapse__box ">
+            <div className="collapse__box">
                 <button className="collapse__title">
-                    <h2 className="h2">Perfil profesional</h2>
+                    <h2 className="h2"> { title }</h2>
                 </button>
                 <div className="collapse__content">
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing
-                        elit, sed do eiusmod tempor incididunt ut labore et
-                        dolore magna aliqua. Ut enim ad minim veniam, quis
-                        nostrud exercitation ullamco laboris nisi ut aliquip ex
-                        ea commodo consequat.
-                    </p>
+                    { children }
                 </div>
             </div>
         </div>
