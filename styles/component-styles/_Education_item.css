@@ -1,0 +1,16 @@
+.education_item {
+    display: table;
+}
+
+.education_item span {
+    font-weight: 700;
+    width: 25%;
+}
+
+.divider--gray {
+    border-color: rgb(230, 230, 230);
+}
+
+.row__title {
+    padding: .5rem 1.5rem .2rem 0rem;
+}

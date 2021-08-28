@@ -1,5 +1,5 @@
 .collapse__box {
-  padding: 1.5rem 0rem;
+  padding: 1rem 0rem;
 }
 
 .collapse__title {
@@ -28,3 +28,8 @@
     border-right: 1px solid var(--stroke-color);
     border-bottom: 1px solid var(--stroke-color);
   }
+
+.collapse__education {
+  height: 13rem;
+  overflow: auto;
+}

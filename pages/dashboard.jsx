@@ -3,7 +3,8 @@ import Image from "next/image";
 import HeadNav from "../components/HeadNav";
 import Collapse from "../components/collapseContent";
 import ImageUser from "../components/ImageUser";
-import { educacion } from "../data/example"
+import { educacion as educationArray } from "../data/example"
+import EducationInfo from "../components/EducationInfo";
 
 export default function Home() {
     return (
@@ -42,8 +43,15 @@ export default function Home() {
                                     id vel itaque?
                                 </p>
                             </Collapse>
-                            <Collapse title="Educación">
-                               
+                            <Collapse title="Educación" variant="education">
+                               {
+                                    educationArray.map((info, idx) => 
+                                        // [item0, item1, item2] -- idx: 0, 1, 2
+                                        // educationArray.length - 1 : Ultimo elemento del array
+                                        // Devuelve: True, True, False
+                                        <EducationInfo info={info} key={info._id} divider={educationArray.length - 1 !== idx}/>
+                                    )
+                               }
                             </Collapse>
                         </div>
                     </div>

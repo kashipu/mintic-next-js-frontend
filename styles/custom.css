@@ -6,6 +6,7 @@
 @import url(./component-styles/_Layout.css);
 @import url(./component-styles/_Collapse.css);
 @import url(./component-styles/_imageuser.css);
+@import url(./component-styles/_Education_item.css);
 
 /* Estilos páginas */
 @import url(./pages-styles/_dashboard.css);
