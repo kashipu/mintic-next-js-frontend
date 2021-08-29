@@ -1,12 +1,26 @@
+import { useState } from 'react';
 import Head from "next/head";
 import Image from "next/image";
 import HeadNav from "../components/HeadNav";
 import Inputs from "../components/Inputs";
 import loginPhoto from "../public/img/loginimage.png";
+import Modal from "../components/Modal";
 
 export default function Home() {
+    const [showModal, setShowModal] = useState(false);
+
+    const submitModal = () => {
+        console.log('Submit modal')
+        setShowModal(true);
+    };
+
+    const handleCloseModal = () => {
+        setShowModal(false);
+    }
+    
     return (
         <div>
+            { showModal && <Modal onCloseModal={() => handleCloseModal()}/> }
             <Head>
                 <title>Hola Mundo</title>
                 <meta
@@ -67,7 +81,8 @@ export default function Home() {
                                     <div className="button__submit">
                                         <button
                                             className="btn-nx btn-nx-primary"
-                                            type="submit"
+                                            type="button"
+                                            onClick={submitModal}
                                         >
                                             Registrarse
                                         </button>
