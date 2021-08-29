@@ -31,9 +31,9 @@ export default function Home() {
                             nesciunt. Neque porro quisquam est.
                         </p>
                     </div>
-                    <div class="form__login">
-                        <div class="form__container">
-                            <div class="form__header">
+                    <div className="form__login">
+                        <div className="form__container">
+                            <div className="form__header">
                                 <h3>Registra tu perfil</h3>
                                 <p>
                                     Lorem ipsum dolor sit amet, consectetur
@@ -42,7 +42,7 @@ export default function Home() {
                                     cuenta <a href="">ingresa aquí</a>
                                 </p>
                             </div>
-                            <div class="form__box">
+                            <div className="form__box">
                                 <form action="">
                                     <Inputs
                                         name="Nombres"
@@ -64,9 +64,9 @@ export default function Home() {
                                         id="email_login"
                                         type="password"
                                     />
-                                    <div class="button__submit">
+                                    <div className="button__submit">
                                         <button
-                                            class="btn-nx btn-nx-primary"
+                                            className="btn-nx btn-nx-primary"
                                             type="submit"
                                         >
                                             Registrarse
