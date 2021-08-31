@@ -1,26 +1,23 @@
-import { useState } from 'react';
 import Head from "next/head";
 import Image from "next/image";
 import HeadNav from "../components/HeadNav";
 import Inputs from "../components/Inputs";
 import loginPhoto from "../public/img/loginimage.png";
 import Modal from "../components/Modal";
+import LoginModal from "../components/LoginModal";
 
 export default function Home() {
-    const [showModal, setShowModal] = useState(false);
-
-    const submitModal = () => {
-        console.log('Submit modal')
-        setShowModal(true);
-    };
-
-    const handleCloseModal = () => {
-        setShowModal(false);
-    }
-    
     return (
         <div>
-            { showModal && <Modal onCloseModal={() => handleCloseModal()}/> }
+            {/* <Modal title="Registro Exitoso">
+                <p>
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                    Quibusdam dolores magni cum id? Consequuntur itaque,
+                    reprehenderit reiciendis minus, neque odit unde dolorem
+                    saepe similique dolor iste enim explicabo excepturi dolore!
+                </p>
+            </Modal> */}
+            <LoginModal></LoginModal>
             <Head>
                 <title>Hola Mundo</title>
                 <meta
@@ -36,7 +33,7 @@ export default function Home() {
                         <h1 className="h1">
                             ¡Crea tu hoja de vida de forma rápida y sencilla!
                         </h1>
-                        <Image src={loginPhoto}/>
+                        <Image src={loginPhoto} />
                         <h2 className="h2">Sed ut perspiciatis</h2>
                         <p>
                             Nemo enim ipsam voluptatem quia voluptas sit
@@ -82,7 +79,6 @@ export default function Home() {
                                         <button
                                             className="btn-nx btn-nx-primary"
                                             type="button"
-                                            onClick={submitModal}
                                         >
                                             Registrarse
                                         </button>
