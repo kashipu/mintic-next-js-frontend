@@ -60,7 +60,7 @@ export default function Dashboard() {
     // Escucha cambios en el Apollo Request
     useEffect(() => {
         if (dataUser) {
-            console.log("User info:" + dataUser?.getUserPersonalInfo);
+            // console.log(dataUser?.getUserPersonalInfo);
             setUserInfo({
                 ...userInfo,
                 personalInfo: dataUser?.getUserPersonalInfo
@@ -70,7 +70,7 @@ export default function Dashboard() {
 
     useEffect(() => {
         if (dataExperience) {
-            console.log(dataExperience?.getUserExperienceInfo);
+            // console.log(dataExperience?.getUserExperienceInfo);
             setUserInfo({
                 ...userInfo,
                 experience: dataExperience?.getUserExperienceInfo
@@ -80,7 +80,7 @@ export default function Dashboard() {
 
     useEffect(() => {
         if (dataEducation) {
-            console.log(dataEducation?.getUserEducationInfo);
+            // console.log(dataEducation?.getUserEducationInfo);
             setUserInfo({
                 ...userInfo,
                 education: dataEducation?.getUserEducationInfo
@@ -90,7 +90,7 @@ export default function Dashboard() {
 
     useEffect(() => {
         if (dataLinks) {
-            console.log(dataLinks?.getAllProfessionalLinks);
+            // console.log(dataLinks?.getAllProfessionalLinks);
             setUserInfo({
                 ...userInfo,
                 links: dataLinks?.getAllProfessionalLinks
@@ -160,7 +160,7 @@ export default function Dashboard() {
                                         (info, idx) => (
                                             <EducationInfo
                                                 info={info}
-                                                key={info._id}
+                                                key={idx}
                                                 divider={
                                                     educationArray.length -
                                                         1 !==
@@ -178,7 +178,7 @@ export default function Dashboard() {
                                         (info, idx) => (
                                             <ExperienceInfo
                                                 info={info}
-                                                key={info._id}
+                                                key={idx}
                                                 divider={
                                                     educationArray.length -
                                                         1 !==
@@ -192,7 +192,7 @@ export default function Dashboard() {
                                 <Collapse title="Habilidades" variant="skills">
                                     {userInfo?.personalInfo?.skills.map(
                                         (info, idx) => (
-                                            <SkillsInfo info={info} />
+                                            <SkillsInfo info={info} key={idx}/>
                                         )
                                     )}
                                 </Collapse>
