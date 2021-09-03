@@ -84,7 +84,7 @@ export default function LoginModal() {
     };
 
     return (
-        true && (
+        loginModal && (
             <Modal onClose={handleCloseLoginModal}>
                 <form onSubmit={handleSubmit}>
                     <Inputs

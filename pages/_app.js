@@ -10,9 +10,14 @@ import client from "../apollo-client";
 function MyApp({ Component, pageProps }) {
   const [loginModal, setLoginModal] = useState(false);
 
+  const contextProps = {
+    loginModal,
+    setLoginModal,
+  }
+
   return (
     <ApolloProvider client={client}>
-      <AppContext.Provider value={{ loginModal, setLoginModal }}>
+      <AppContext.Provider value={contextProps}>
         <Component {...pageProps} />
       </AppContext.Provider>
     </ApolloProvider>
