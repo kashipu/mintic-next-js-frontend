@@ -4,7 +4,9 @@ export default function CollapseContent({ title, children, variant = "default" }
     const variants = {
         default: "",
         education: "collapse__education",
-        experience: "collapse__experience"
+        experience: "collapse__experience",
+        skills: "collapse__skills",
+        links: "collapse_links"
     };
 
     return (
@@ -24,5 +26,5 @@ export default function CollapseContent({ title, children, variant = "default" }
 CollapseContent.propTypes = {
     title: PropTypes.string.isRequired,
     children: PropTypes.node.isRequired,
-    variant: PropTypes.oneOf(["default", "education", "experience"]),
+    variant: PropTypes.oneOf(["default", "education", "experience", "skills", "links"]),
 }

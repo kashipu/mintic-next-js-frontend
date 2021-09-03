@@ -10,6 +10,7 @@ import Collapse from "../components/collapseContent";
 import ImageUser from "../components/ImageUser";
 import EducationInfo from "../components/EducationInfo";
 import LoadingModal from "../components/LoadingModal";
+import ExperienceInfo from "../components/ExperienceInfo";
 
 // Custom Hooks
 import useGetPersonalInfo from "../hooks/useGetPersonalInfo";
@@ -53,7 +54,7 @@ export default function Dashboard() {
         if (dataUser) {
             console.log("User info:" + dataUser?.getUserPersonalInfo);
             setUserInfo({
-                ...userInfo, 
+                ...userInfo,
                 personalInfo: dataUser?.getUserPersonalInfo
             });
         }
@@ -63,7 +64,7 @@ export default function Dashboard() {
         if (dataExperience) {
             console.log(dataExperience?.getUserExperienceInfo);
             setUserInfo({
-                ...userInfo, 
+                ...userInfo,
                 experience: dataExperience?.getUserExperienceInfo
             });
         }
@@ -73,7 +74,7 @@ export default function Dashboard() {
         if (dataEducation) {
             console.log(dataEducation?.getUserEducationInfo);
             setUserInfo({
-                ...userInfo, 
+                ...userInfo,
                 education: dataEducation?.getUserEducationInfo
             });
         }
@@ -83,22 +84,27 @@ export default function Dashboard() {
         if (dataLinks) {
             console.log(dataLinks?.getAllProfessionalLinks);
             setUserInfo({
-                ...userInfo, 
+                ...userInfo,
                 links: dataLinks?.getAllProfessionalLinks
             });
         }
     }, [dataLinks]);
 
-    useEffect(()=>{
-        if (!loadingUser && !loadingEducation && !loadingExperience && !loadingLinks) {
-            setLoading(false)
+    useEffect(() => {
+        if (
+            !loadingUser &&
+            !loadingEducation &&
+            !loadingExperience &&
+            !loadingLinks
+        ) {
+            setLoading(false);
         }
-    },[loadingUser, loadingEducation, loadingExperience, loadingLinks])
+    }, [loadingUser, loadingEducation, loadingExperience, loadingLinks]);
 
     // ==============================================
     // =============== PAGE RENDERING ===============
     // ==============================================
-    
+
     // La página ya cargó y el token es inválido
     if (!loading && !userInfo) {
         router.push("/");
@@ -122,32 +128,52 @@ export default function Dashboard() {
                         <div className="dashboard__main">
                             <div className="dashboard__head">
                                 <h1 className="h1">
-                                    Bienvenido, <br /> 
+                                    Bienvenido, <br />
                                     <span className="name_h1">
-                                        {`${userInfo?.personalInfo?.name} ${userInfo?.personalInfo?.lastname}`} 
+                                        {`${userInfo?.personalInfo?.name} ${userInfo?.personalInfo?.lastname}`}
                                     </span>
                                 </h1>
                             </div>
                             <div className="dashboard__content">
                                 <Collapse title="Perfil profesional">
-                                    <p>
-                                    {userInfo?.personalInfo?.description}
-                                    </p>
+                                    <p>{userInfo?.personalInfo?.description}</p>
                                 </Collapse>
                                 <Collapse title="Educación" variant="education">
-                                    {userInfo?.education?.results.map((info, idx) => (
-                                        // [item0, item1, item2] -- idx: 0, 1, 2
-                                        // educationArray.length - 1 : Ultimo elemento del array
-                                        // Devuelve: True, True, False
-                                        <EducationInfo
-                                            info={info}
-                                            key={info._id}
-                                            divider={
-                                                educationArray.length - 1 !==
-                                                idx
-                                            }
-                                        />
-                                    ))}
+                                    {userInfo?.education?.results.map(
+                                        (info, idx) => (
+                                            // [item0, item1, item2] -- idx: 0, 1, 2
+                                            // educationArray.length - 1 : Ultimo elemento del array
+                                            // Devuelve: True, True, False
+                                            <EducationInfo
+                                                info={info}
+                                                key={info._id}
+                                                divider={
+                                                    educationArray.length -
+                                                        1 !==
+                                                    idx
+                                                }
+                                            />
+                                        )
+                                    )}
+                                </Collapse>
+                                <Collapse
+                                    title="Experiencia profesional"
+                                    variant="experience"
+                                >
+                                    <ExperienceInfo></ExperienceInfo>
+                                </Collapse>
+
+                                <Collapse
+                                    title="Habilidades"
+                                    variant="skills"
+                                >
+
+                                </Collapse>
+                                <Collapse
+                                    title="Enlaces"
+                                    variant="links"
+                                >
+
                                 </Collapse>
                             </div>
                         </div>
