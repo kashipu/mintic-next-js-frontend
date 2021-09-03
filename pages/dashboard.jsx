@@ -110,7 +110,7 @@ export default function Dashboard() {
     if (!loading && !userInfo) {
         router.push("/");
     }
-
+    console.log(userInfo?.links?.results[0].url)
     // La página ya cargó y el token es válido - muestra el dashboard
     if (!loading && userInfo) {
         return (
@@ -187,7 +187,7 @@ export default function Dashboard() {
                                     title="Enlaces"
                                     variant="links"
                                 >
-
+                                    <Image src></Image>
                                 </Collapse>
                             </div>
                         </div>
