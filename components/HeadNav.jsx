@@ -20,22 +20,22 @@ export default function HeadNav() {
                         <div className="container__nav">
                             <ul>
                                 <li>
-                                    <Link href="/">
+                                    <Link href="/loading">
                                         <a>Inicio</a>
                                     </Link>
                                 </li>
                                 <li>
-                                    <Link href="/">
+                                    <Link href="/loading">
                                         <a>Cursos</a>
                                     </Link>
                                 </li>
                                 <li>
-                                    <Link href="/">
+                                    <Link href="/loading">
                                         <a>Empresas</a>
                                     </Link>
                                 </li>
                                 <li>
-                                    <Link href="/">
+                                    <Link href="/loading">
                                         <a>Soporte</a>
                                     </Link>
                                 </li>

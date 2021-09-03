@@ -8,7 +8,7 @@
 @import url(./component-styles/_imageuser.css);
 @import url(./component-styles/_Education_item.css);
 @import url(./component-styles/_Modal.css);
-
+@import url(./component-styles/_loadingscreen.css);
 /* Estilos páginas */
 @import url(./pages-styles/_dashboard.css);
 
@@ -50,6 +50,10 @@ label {
     font-size: 1.125rem;
 }
 
+b {
+    font-weight: 500;
+}
+
 input {
     margin: .8rem 0rem;
     display: block;
@@ -75,18 +79,6 @@ input {
         margin: 0 auto;
     }
   }
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 /* .nav__items ul {

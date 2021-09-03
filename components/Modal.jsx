@@ -1,16 +1,20 @@
-export default function Modal({ title, children, onClose }) {
+export default function Modal({
+    title,
+    children,
+    onClose,
+    hideCloseButton = false
+}) {
     return (
         <>
             <div className="overlay">
                 <div className="modal--container">
-                    <div
-                        className="modal--close"
-                        onClick={() => onClose()}
-                    >
-                        <div className="button-close">
-                            <p>X</p>
+                    {!hideCloseButton && (
+                        <div className="modal--close" onClick={() => onClose()}>
+                            <div className="button-close">
+                                <p>X</p>
+                            </div>
                         </div>
-                    </div>
+                    )}
                     <div className="modal--header">
                         <h2 className="h2">{title}</h2>
                     </div>
