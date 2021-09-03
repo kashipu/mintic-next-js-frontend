@@ -3,7 +3,6 @@ import Image from "next/image";
 import HeadNav from "../components/HeadNav";
 import Inputs from "../components/Inputs";
 import loginPhoto from "../public/img/loginimage.png";
-import Modal from "../components/Modal";
 import LoginModal from "../components/LoginModal";
 
 export default function Home() {
@@ -17,7 +16,7 @@ export default function Home() {
                     saepe similique dolor iste enim explicabo excepturi dolore!
                 </p>
             </Modal> */}
-            {/*<LoginModal></LoginModal>*/}
+            <LoginModal/>
             <Head>
                 <title>Make-A-Res</title>
                 <meta

@@ -1,9 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
+import { useAppContext } from "../context/AppContext";
 import logo from "../public/img/logo.svg";
 
-
 export default function HeadNav() {
+    const { setLoginModal } = useAppContext();
+
     return (
         <div>
             <header className="header">
@@ -42,14 +44,13 @@ export default function HeadNav() {
                             </ul>
                         </div>
                         <div className="container__button">
-                            <Link href="/">
-                                <button
-                                    type="button"
-                                    className="btn-nx btn-nx-primary"
-                                >
-                                    Ingresar
-                                </button>
-                            </Link>
+                            <button
+                                type="button"
+                                className="btn-nx btn-nx-primary"
+                                onClick={() => setLoginModal(true)}
+                            >
+                                Ingresar
+                            </button>
                         </div>
                     </nav>
                 </div>
