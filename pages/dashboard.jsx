@@ -17,6 +17,9 @@ import useGetExperienceInfo from "../hooks/useGetExperienceInfo";
 import useGetEducationInfo from "../hooks/useGetEducationInfo";
 import useGetProfessionalLinks from "../hooks/useGetProfessionalLinks";
 
+// Context
+import { useAppContext } from "../context/AppContext";
+
 // Data mocks
 import { educacion as educationArray } from "../data/example";
 
@@ -26,6 +29,9 @@ const initialErrorState = {
 };
 
 export default function Dashboard() {
+    // CONTEXT
+    const { setUserLoggedIn } = useAppContext();
+
     // STATES
     const [userInfo, setUserInfo] = useState(null);
     const [loading, setLoading] = useState(true);
@@ -89,11 +95,18 @@ export default function Dashboard() {
         }
     }, [dataLinks]);
 
+    // Detiene el loading
     useEffect(()=>{
         if (!loadingUser && !loadingEducation && !loadingExperience && !loadingLinks) {
             setLoading(false)
         }
     },[loadingUser, loadingEducation, loadingExperience, loadingLinks])
+
+    useEffect(() => {
+        if(!loading && userInfo) {
+            setUserLoggedIn(true);
+        }
+    }, [loading]);
 
     // ==============================================
     // =============== PAGE RENDERING ===============

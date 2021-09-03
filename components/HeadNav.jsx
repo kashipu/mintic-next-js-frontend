@@ -4,7 +4,7 @@ import { useAppContext } from "../context/AppContext";
 import logo from "../public/img/logo.svg";
 
 export default function HeadNav() {
-    const { setLoginModal } = useAppContext();
+    const { setLoginModal, userLoggedIn, handleLogout } = useAppContext();
 
     return (
         <div>
@@ -44,13 +44,23 @@ export default function HeadNav() {
                             </ul>
                         </div>
                         <div className="container__button">
-                            <button
-                                type="button"
-                                className="btn-nx btn-nx-primary"
-                                onClick={() => setLoginModal(true)}
-                            >
-                                Ingresar
-                            </button>
+                            {userLoggedIn ? (
+                                <button
+                                    type="button"
+                                    className="btn-nx btn-nx-primary"
+                                    onClick={() => handleLogout()}
+                                >
+                                    Salir
+                                </button>
+                            ) : (
+                                <button
+                                    type="button"
+                                    className="btn-nx btn-nx-primary"
+                                    onClick={() => setLoginModal(true)}
+                                >
+                                    Ingresar
+                                </button>
+                            )}
                         </div>
                     </nav>
                 </div>
