@@ -17,7 +17,7 @@ export default function Home() {
                     saepe similique dolor iste enim explicabo excepturi dolore!
                 </p>
             </Modal> */}
-            <LoginModal></LoginModal>
+            {/*<LoginModal></LoginModal>*/}
             <Head>
                 <title>Make-A-Res</title>
                 <meta

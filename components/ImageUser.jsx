@@ -7,9 +7,9 @@ export default function ImageUser() {
         <div>
             <div className="imageUser_content">
                 <Image src={userImage}/>
-            <button className="btn-dashboard btn-nx-circle btn-nx-primary">
+            {/* <button className="btn-dashboard btn-nx-circle btn-nx-primary">
                     <Image src={iconCamera}/>
-            </button>
+            </button> */}
             </div>
         </div>
     )

@@ -35,10 +35,10 @@ export default function Dashboard() {
     const router = useRouter();
 
     /* Apollo request */
-    const { dataUser } = useGetPersonalInfo();
-    const { dataExperience } = useGetExperienceInfo();
-    const { dataEducation } = useGetEducationInfo();
-    const { dataLinks } = useGetProfessionalLinks();
+    const { dataUser, loadingUser } = useGetPersonalInfo();
+    const { dataExperience, loadingExperience } = useGetExperienceInfo();
+    const { dataEducation, loadingEducation } = useGetEducationInfo();
+    const { dataLinks, loadingLinks } = useGetProfessionalLinks();
 
     // Verifica si hay token al cargar o sino lo regresa al login
     useEffect(() => {
@@ -51,32 +51,54 @@ export default function Dashboard() {
     // Escucha cambios en el Apollo Request
     useEffect(() => {
         if (dataUser) {
-            console.log(dataUser?.getUserPersonalInfo);
+            console.log("User info:" + dataUser?.getUserPersonalInfo);
+            setUserInfo({
+                ...userInfo, 
+                personalInfo: dataUser?.getUserPersonalInfo
+            });
         }
     }, [dataUser]);
 
     useEffect(() => {
         if (dataExperience) {
             console.log(dataExperience?.getUserExperienceInfo);
+            setUserInfo({
+                ...userInfo, 
+                experience: dataExperience?.getUserExperienceInfo
+            });
         }
     }, [dataExperience]);
 
     useEffect(() => {
         if (dataEducation) {
             console.log(dataEducation?.getUserEducationInfo);
+            setUserInfo({
+                ...userInfo, 
+                education: dataEducation?.getUserEducationInfo
+            });
         }
     }, [dataEducation]);
 
     useEffect(() => {
         if (dataLinks) {
             console.log(dataLinks?.getAllProfessionalLinks);
+            setUserInfo({
+                ...userInfo, 
+                links: dataLinks?.getAllProfessionalLinks
+            });
         }
     }, [dataLinks]);
+
+    useEffect(()=>{
+        if (!loadingUser && !loadingEducation && !loadingExperience && !loadingLinks) {
+            setLoading(false)
+        }
+    },[loadingUser, loadingEducation, loadingExperience, loadingLinks])
 
     // ==============================================
     // =============== PAGE RENDERING ===============
     // ==============================================
-
+    
     // La página ya cargó y el token es inválido
     if (!loading && !userInfo) {
         router.push("/");
@@ -100,29 +122,20 @@ export default function Dashboard() {
                         <div className="dashboard__main">
                             <div className="dashboard__head">
                                 <h1 className="h1">
-                                    Bienvenido, <br /> Juan José Perdomo
+                                    Bienvenido, <br /> 
+                                    <span className="name_h1">
+                                        {`${userInfo?.personalInfo?.name} ${userInfo?.personalInfo?.lastname}`} 
+                                    </span>
                                 </h1>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur
-                                    adipiscing elit. Etiam sit amet scelerisque
-                                    mauris. Pellentesque elementum elementum
-                                    lectus, ut iaculis sem tincidunt commodo. Ut
-                                    a malesuada
-                                </p>
                             </div>
                             <div className="dashboard__content">
                                 <Collapse title="Perfil profesional">
                                     <p>
-                                        Lorem ipsum dolor sit amet consectetur
-                                        adipisicing elit. Distinctio eum quaerat
-                                        quia excepturi cumque, iste molestiae,
-                                        saepe veritatis aliquid tempora veniam
-                                        laudantium. Consequatur, quo possimus
-                                        nihil aspernatur id vel itaque?
+                                    {userInfo?.personalInfo?.description}
                                     </p>
                                 </Collapse>
                                 <Collapse title="Educación" variant="education">
-                                    {educationArray.map((info, idx) => (
+                                    {userInfo?.education?.results.map((info, idx) => (
                                         // [item0, item1, item2] -- idx: 0, 1, 2
                                         // educationArray.length - 1 : Ultimo elemento del array
                                         // Devuelve: True, True, False

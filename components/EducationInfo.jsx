@@ -16,11 +16,11 @@ export default function EducationInfo({ info, divider = true }) {
                         </tr>
                         <tr>
                             <td className="row__title"><span>Fecha de inicio:</span></td>
-                            <td>{ start_date }</td>
+                            <td>{ new Date(start_date).toLocaleDateString() }</td>
                         </tr>
                         <tr>
                             <td className="row__title"><span>Fecha final:</span></td>
-                            <td>{ end_date ?? "En Curso" }</td>
+                            <td>{ end_date ? new Date(end_date).toLocaleDateString() : "En Curso" }</td>
                         </tr>
                     </tbody>
                 </table>

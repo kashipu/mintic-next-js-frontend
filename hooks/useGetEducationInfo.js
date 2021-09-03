@@ -18,14 +18,14 @@ const EDUCATION_INFO = gql`
 `;
 
 const useGetEducationInfo = (userId) => {
-  const { error: errorEducation, data: dataEducation } = useQuery(EDUCATION_INFO, {
+  const { error: errorEducation, data: dataEducation, loading:loadingEducation } = useQuery(EDUCATION_INFO, {
     variables: { userId },
     onError: (error) => {
       console.log(`Message: ${error.message}`);
     }
   });
 
-  return { errorEducation, dataEducation };
+  return { errorEducation, dataEducation, loadingEducation };
 }
 
 export default useGetEducationInfo;

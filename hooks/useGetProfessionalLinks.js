@@ -15,14 +15,14 @@ query GetUserInfo($userId: ID) {
 `;
 
 const useGetProfessionalLinks = (userId) => {
-  const { error: errorLinks, data: dataLinks } = useQuery(PROFESIONAL_LINKS, {
+  const { error: errorLinks, data: dataLinks, loading:loadingLinks } = useQuery(PROFESIONAL_LINKS, {
     variables: { userId },
     onError: (error) => {
       console.log(`Message: ${error.message}`);
     }
   });
 
-  return { errorLinks, dataLinks };
+  return { errorLinks, dataLinks, loadingLinks };
 };
 
 export default useGetProfessionalLinks;

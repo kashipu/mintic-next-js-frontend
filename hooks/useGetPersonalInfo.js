@@ -18,14 +18,14 @@ const PERSONAL_INFO = gql`
 `;
 
 const useGetPersonalInfo = (userId) => {
-  const { error: errorUser, data: dataUser } = useQuery(PERSONAL_INFO, {
+  const { error: errorUser, data: dataUser, loading:loadingUser } = useQuery(PERSONAL_INFO, {
     variables: { userId },
     onError: (error) => {
       console.log(`Message: ${error.message}`);
     }
   });
 
-  return { errorUser, dataUser };
+  return { errorUser, dataUser, loadingUser };
 }
 
 export default useGetPersonalInfo;

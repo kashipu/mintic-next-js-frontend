@@ -17,14 +17,14 @@ const EXPERIENCE_INFO = gql`
 `;
 
 const useGetExperienceInfo = (userId) => {
-  const { error: errorExperience, data: dataExperience } = useQuery(EXPERIENCE_INFO, {
+  const { error: errorExperience, data: dataExperience, loading:loadingExperience } = useQuery(EXPERIENCE_INFO, {
     variables: { userId },
     onError: (error) => {
       console.log(`Message: ${error.message}`);
     }
   });
 
-  return { errorExperience, dataExperience };
+  return { errorExperience, dataExperience, loadingExperience };
 }
 
 export default useGetExperienceInfo;
