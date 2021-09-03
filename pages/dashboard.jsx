@@ -1,111 +1,24 @@
+// React - Next imports
 import Head from "next/head";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import { gql, useMutation, useQuery } from "@apollo/client";
 
+// Components
 import HeadNav from "../components/HeadNav";
 import Collapse from "../components/collapseContent";
 import ImageUser from "../components/ImageUser";
 import EducationInfo from "../components/EducationInfo";
 import LoadingModal from "../components/LoadingModal";
 
+// Custom Hooks
+import useGetPersonalInfo from "../hooks/useGetPersonalInfo";
+import useGetExperienceInfo from "../hooks/useGetExperienceInfo";
+import useGetEducationInfo from "../hooks/useGetEducationInfo";
+import useGetProfessionalLinks from "../hooks/useGetProfessionalLinks";
+
+// Data mocks
 import { educacion as educationArray } from "../data/example";
-
-const PERSONAL_INFO = gql`
-    query GetUserInfo($userId: ID) {
-        getUserPersonalInfo(userId: $userId) {
-            name
-            lastname
-            cellphone
-            email
-            city
-            description
-            dni
-            dob
-            skills
-        }
-        getAllProfessionalLinks(userId: $userId) {
-            results {
-                id
-                social_network {
-                    name
-                }
-                url
-            }
-        }
-        getUserExperienceInfo(userId: $userId) {
-            results {
-                position_name
-                company_name
-                city
-                company_start_date
-                company_end_date
-                responsabilities
-                achievements
-            }
-        }
-        getUserEducationInfo(userId: $userId) {
-            results {
-                institution_name
-                description
-                end_date
-                start_date
-                program_name
-                program_type {
-                    name
-                }
-            }
-        }
-    }
-`;
-
-const EXPERIENCE_INFO = gql`
-    query GetUserInfo($userId: ID) {
-        getUserExperienceInfo(userId: $userId) {
-            results {
-                position_name
-                company_name
-                city
-                company_start_date
-                company_end_date
-                responsabilities
-                achievements
-            }
-        }
-    }
-`;
-
-const EDUCATION_INFO = gql`
-    query GetUserInfo($userId: ID) {
-        getUserEducationInfo(userId: $userId) {
-            results {
-                institution_name
-                description
-                end_date
-                start_date
-                program_name
-                program_type {
-                    name
-                }
-            }
-        }
-    }
-`;
-
-const PROFESIONAL_LINKS = gql`
-    query GetUserInfo($userId: ID) {
-        getAllProfessionalLinks(userId: $userId) {
-            results {
-                id
-                social_network {
-                    name
-                }
-                url
-            }
-        }
-    }
-`;
 
 const initialErrorState = {
     error: false,
@@ -122,32 +35,10 @@ export default function Dashboard() {
     const router = useRouter();
 
     /* Apollo request */
-    const { error: errorUser, data: dataUser } = useQuery(PERSONAL_INFO, {
-        onError: (error) => {
-            console.log(`Message: ${error.message}`);
-        }
-    });
-    const { error: errorExperience, data: dataExperience } = useQuery(
-        EXPERIENCE_INFO,
-        {
-            onError: (error) => {
-                console.log(`Message: ${error.message}`);
-            }
-        }
-    );
-    const { error: errorEducation, data: dataEducation } = useQuery(
-        EDUCATION_INFO,
-        {
-            onError: (error) => {
-                console.log(`Message: ${error.message}`);
-            }
-        }
-    );
-    const { error: errorLinks, data: dataLinks } = useQuery(PROFESIONAL_LINKS, {
-        onError: (error) => {
-            console.log(`Message: ${error.message}`);
-        }
-    });
+    const { dataUser } = useGetPersonalInfo();
+    const { dataExperience } = useGetExperienceInfo();
+    const { dataEducation } = useGetEducationInfo();
+    const { dataLinks } = useGetProfessionalLinks();
 
     // Verifica si hay token al cargar o sino lo regresa al login
     useEffect(() => {
@@ -158,22 +49,29 @@ export default function Dashboard() {
     }, []);
 
     // Escucha cambios en el Apollo Request
-    // debugger;
     useEffect(() => {
-        console.log(dataUser?.getUserPersonalInfo);
-        console.log(dataExperience?.getUserExperienceInfo);
-        console.log(dataEducation?.getUserEducationInfo);
-        console.log(dataLinks?.getAllProfessionalLinks);
-    }, [
-        errorUser,
-        dataUser,
-        errorExperience,
-        dataExperience,
-        errorEducation,
-        dataEducation,
-        errorLinks,
-        dataLinks
-    ]);
+        if (dataUser) {
+            console.log(dataUser?.getUserPersonalInfo);
+        }
+    }, [dataUser]);
+
+    useEffect(() => {
+        if (dataExperience) {
+            console.log(dataExperience?.getUserExperienceInfo);
+        }
+    }, [dataExperience]);
+
+    useEffect(() => {
+        if (dataEducation) {
+            console.log(dataEducation?.getUserEducationInfo);
+        }
+    }, [dataEducation]);
+
+    useEffect(() => {
+        if (dataLinks) {
+            console.log(dataLinks?.getAllProfessionalLinks);
+        }
+    }, [dataLinks]);
 
     // ==============================================
     // =============== PAGE RENDERING ===============
