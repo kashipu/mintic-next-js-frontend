@@ -11,6 +11,7 @@ import ImageUser from "../components/ImageUser";
 import EducationInfo from "../components/EducationInfo";
 import LoadingModal from "../components/LoadingModal";
 import ExperienceInfo from "../components/ExperienceInfo";
+import SkillsInfo from "../components/SkillsInfo";
 
 // Custom Hooks
 import useGetPersonalInfo from "../hooks/useGetPersonalInfo";
@@ -141,9 +142,6 @@ export default function Dashboard() {
                                 <Collapse title="Educación" variant="education">
                                     {userInfo?.education?.results.map(
                                         (info, idx) => (
-                                            // [item0, item1, item2] -- idx: 0, 1, 2
-                                            // educationArray.length - 1 : Ultimo elemento del array
-                                            // Devuelve: True, True, False
                                             <EducationInfo
                                                 info={info}
                                                 key={info._id}
@@ -160,14 +158,30 @@ export default function Dashboard() {
                                     title="Experiencia profesional"
                                     variant="experience"
                                 >
-                                    <ExperienceInfo></ExperienceInfo>
+                                    {userInfo?.experience?.results.map(
+                                        (info, idx) => (
+                                            <ExperienceInfo
+                                                info={info}
+                                                key={info._id}
+                                                divider={
+                                                    educationArray.length -
+                                                        1 !==
+                                                    idx
+                                                }
+                                            />
+                                        )
+                                    )}
                                 </Collapse>
 
                                 <Collapse
                                     title="Habilidades"
                                     variant="skills"
                                 >
-
+                                    {userInfo?.personalInfo?.skills.map(
+                                        (info, idx) => (
+                                            <SkillsInfo info={info}/>
+                                        )
+                                    )}
                                 </Collapse>
                                 <Collapse
                                     title="Enlaces"
