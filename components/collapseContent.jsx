@@ -1,22 +1,33 @@
 import PropTypes from "prop-types";
+import { useAppContext } from "../context/AppContext";
 
-export default function CollapseContent({ title, children, variant = "default" }) {
-    const variants = {
-        default: "",
-        education: "collapse__education",
-        experience: "collapse__experience",
-        skills: "collapse__skills",
-        links: "collapse_links"
+const variants = {
+    personalInfo: "",
+    education: "collapse__education",
+    experience: "collapse__experience",
+    skills: "collapse__skills",
+    links: "collapse_links"
+};
+
+export default function CollapseContent({
+    title,
+    children,
+    variant = "default"
+}) {
+    const { editModals, setEditModals } = useAppContext();
+
+    const handleEdit = () => {
+        setEditModals({ ...editModals, [variant]: true });
     };
 
     return (
         <div>
             <div className="collapse__box">
-                <button className="collapse__title">
-                    <h2 className="h2"> { title }</h2>
+                <button className="collapse__title" onClick={handleEdit}>
+                    <h2 className="h2"> {title}</h2>
                 </button>
                 <div className={`collapse__content ${variants[variant]}`}>
-                    { children }
+                    {children}
                 </div>
             </div>
         </div>
@@ -26,5 +37,11 @@ export default function CollapseContent({ title, children, variant = "default" }
 CollapseContent.propTypes = {
     title: PropTypes.string.isRequired,
     children: PropTypes.node.isRequired,
-    variant: PropTypes.oneOf(["default", "education", "experience", "skills", "links"]),
-}
+    variant: PropTypes.oneOf([
+        "personalInfo",
+        "education",
+        "experience",
+        "skills",
+        "links"
+    ])
+};
