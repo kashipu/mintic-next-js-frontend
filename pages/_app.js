@@ -16,6 +16,7 @@ function MyApp({ Component, pageProps }) {
   const router = useRouter();
   const [loginModal, setLoginModal] = useState(false);
   const [userLoggedIn, setUserLoggedIn] = useState(false);
+  const [userInfo, setUserInfo] = useState(null);
 
   const handleLogout = () => {
     setUserLoggedIn(false);
@@ -24,12 +25,24 @@ function MyApp({ Component, pageProps }) {
     router.push('/');
   }
 
+  const [editModals, setEditModals] = useState({
+    personalInfo: false,
+    education: false,
+    experience: false,
+    skills: false,
+    links: false,
+  })
+
   const contextProps = {
     loginModal,
     setLoginModal,
     userLoggedIn,
     setUserLoggedIn,
     handleLogout,
+    editModals,
+    setEditModals,
+    userInfo,
+    setUserInfo,
   }
 
   return (

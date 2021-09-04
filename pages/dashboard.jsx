@@ -26,6 +26,7 @@ import { useAppContext } from "../context/AppContext";
 // Data mocks
 import { educacion as educationArray } from "../data/example";
 import LinksInfo from "../components/LinksInfo";
+import PersonalInfoEditModal from "../components/PersonalInfo/EditModal";
 
 const initialErrorState = {
     error: false,
@@ -34,10 +35,9 @@ const initialErrorState = {
 
 export default function Dashboard() {
     // CONTEXT
-    const { setUserLoggedIn } = useAppContext();
+    const { setUserLoggedIn, userInfo, setUserInfo } = useAppContext();
 
     // STATES
-    const [userInfo, setUserInfo] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(initialErrorState);
 
@@ -128,7 +128,7 @@ export default function Dashboard() {
     // La página ya cargó y el token es válido - muestra el dashboard
     if (!loading && userInfo) {
         return (
-            <div>
+            <>
                 <Head>
                     <title>
                         {`${userInfo?.personalInfo?.name} ${userInfo?.personalInfo?.lastname}`}{" "}
@@ -153,7 +153,10 @@ export default function Dashboard() {
                                 </h1>
                             </div>
                             <div className="dashboard__content">
-                                <Collapse title="Perfil profesional">
+                                <Collapse
+                                    title="Perfil profesional"
+                                    variant="personalInfo"
+                                >
                                     <p>{userInfo?.personalInfo?.description}</p>
                                 </Collapse>
                                 <Collapse title="Educación" variant="education">
@@ -193,7 +196,7 @@ export default function Dashboard() {
                                 <Collapse title="Habilidades" variant="skills">
                                     {userInfo?.personalInfo?.skills.map(
                                         (info, idx) => (
-                                            <SkillsInfo info={info} key={idx}/>
+                                            <SkillsInfo info={info} key={idx} />
                                         )
                                     )}
                                 </Collapse>
@@ -210,8 +213,9 @@ export default function Dashboard() {
                         </div>
                     </div>
                 </main>
+                <PersonalInfoEditModal />
                 <Footer/>
-            </div>
+            </>
         );
     }
 
