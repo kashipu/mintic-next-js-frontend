@@ -78,6 +78,19 @@ input {
     display: none;
 }
 
+.footer {
+    color: var(--secondary-color);
+    margin-top: 4rem;
+    background-color: var(--main-color);
+    display: flex;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.footer p {
+    font-weight: 500;
+}
+
 @media only screen and (max-width: 1400px) {
     .wrapper {
         max-width: 85%;
