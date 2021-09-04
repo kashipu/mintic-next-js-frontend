@@ -40,9 +40,11 @@
 .modal--close {
     display: flex;
     justify-content: flex-end;
+    position: relative;
 }
 
 .button-close {
+    position: absolute;
     border-radius: 10px;
     width: 1.5rem;
     height: 1.5rem;
