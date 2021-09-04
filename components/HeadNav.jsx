@@ -22,7 +22,7 @@ export default function HeadNav() {
                         <div className="container__nav">
                             <ul>
                                 <li>
-                                    <Link href="/loading">
+                                    <Link href="/">
                                         <a>Inicio</a>
                                     </Link>
                                 </li>
@@ -32,8 +32,8 @@ export default function HeadNav() {
                                     </Link>
                                 </li>
                                 <li>
-                                    <Link href="/loading">
-                                        <a>Empresas</a>
+                                    <Link href="/dashboard">
+                                        <a>Dashboard</a>
                                     </Link>
                                 </li>
                                 <li>
