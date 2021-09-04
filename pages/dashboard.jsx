@@ -12,6 +12,7 @@ import EducationInfo from "../components/EducationInfo";
 import LoadingModal from "../components/LoadingModal";
 import ExperienceInfo from "../components/ExperienceInfo";
 import SkillsInfo from "../components/SkillsInfo";
+import Footer from "../components/Footer"
 
 // Custom Hooks
 import useGetPersonalInfo from "../hooks/useGetPersonalInfo";
@@ -209,6 +210,7 @@ export default function Dashboard() {
                         </div>
                     </div>
                 </main>
+                <Footer/>
             </div>
         );
     }
